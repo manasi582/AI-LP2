@@ -1,0 +1,101 @@
+import heapq
+
+rowDir = [0, 0, 1, -1]
+colDir = [1, -1, 0, 0]
+
+class Node:
+    def __init__(self, row, col, g, h, parent=None):
+        self.row = row
+        self.col = col
+        self.g = g
+        self.h = h
+        self.f = g + h
+        self.parent = parent
+
+    def __lt__(self, other):
+        return self.f < other.f
+
+
+def heuristic(r1, c1, r2, c2):
+    return abs(r1 - r2) + abs(c1 - c2)
+
+
+def is_valid(row, col, grid):
+    return 0 <= row < len(grid) and 0 <= col < len(grid[0]) and grid[row][col] != '#'
+
+
+def print_path(node, grid, start, goal):
+    while node:
+        if (node.row, node.col) != start and (node.row, node.col) != goal:
+            grid[node.row][node.col] = 'P'
+        node = node.parent
+
+    grid[start[0]][start[1]] = 'S'
+    grid[goal[0]][goal[1]] = 'G'
+
+    print("\nLegend:\nS = Start\nG = Goal\nP = Path\n# = Wall\n. = Open cell\n")
+    print("Grid with shortest path:\n")
+    for i, row in enumerate(grid):
+        print(i, ' '.join(row))
+
+
+def a_star(input_grid, start, goal):
+    grid = [list(row) for row in input_grid]
+    rows, cols = len(grid), len(grid[0])
+
+    open_list = []
+    
+    # ✅ NEW: g_score to track best path
+    g_score = [[float('inf')] * cols for _ in range(rows)]
+    g_score[start[0]][start[1]] = 0
+
+    start_node = Node(start[0], start[1], 0,
+                      heuristic(start[0], start[1], goal[0], goal[1]))
+    heapq.heappush(open_list, start_node)
+
+    while open_list:
+        current = heapq.heappop(open_list)
+        row, col = current.row, current.col
+
+        if (row, col) == goal:
+            print_path(current, grid, start, goal)
+            return
+
+        for i in range(4):
+            new_row = row + rowDir[i]
+            new_col = col + colDir[i]
+
+            if is_valid(new_row, new_col, grid):
+                g = current.g + 1
+
+                # Only update if better path found
+                if g < g_score[new_row][new_col]:
+                    g_score[new_row][new_col] = g
+                    h = heuristic(new_row, new_col, goal[0], goal[1])
+                    neighbor = Node(new_row, new_col, g, h, current)
+                    heapq.heappush(open_list, neighbor)
+
+    print("No path found!")
+
+
+def main():
+    rows = int(input("Enter number of rows: "))
+    cols = int(input("Enter number of columns: "))
+
+    print("Enter the grid row by row (use . for open and # for wall):")
+    grid = []
+    for _ in range(rows):
+        row = input().strip()
+        grid.append(row)
+
+    start_row, start_col = map(int, input("Enter start (row col): ").split())
+    goal_row, goal_col = map(int, input("Enter goal (row col): ").split())
+
+    start = (start_row, start_col)
+    goal = (goal_row, goal_col)
+
+    a_star(grid, start, goal)
+
+
+if __name__ == "__main__":
+    main()
