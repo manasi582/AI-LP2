@@ -1,0 +1,146 @@
+Alright — here’s a **very simple, clean mini project** you can finish quickly and still score well.
+
+---
+
+# 🎯 Mini Project: **Student Management App (Basic)**
+
+---
+
+# 🧾 1. Aim
+
+> To design a simple Salesforce application to store and manage student details.
+
+---
+
+# 📌 2. Objective
+
+* Store student information
+* View and manage records
+* Simple data organization
+
+---
+
+# 🧱 3. Steps (VERY SIMPLE)
+
+---
+
+## ✅ Step 1: Go to Setup
+
+* Click **⚙️ (top right)**
+* Click **Setup**
+
+---
+
+## ✅ Step 2: Create Custom Object
+
+Go to **Object Manager → Create → Custom Object**
+
+### 🔹 Create Object: Student
+
+* Label → `Student`
+* Record Name → `Student Name`
+* Data Type → Text
+
+✔ Tick:
+
+* Allow Reports
+* Allow Activities
+
+👉 Click **Save**
+
+---
+
+## ✅ Step 3: Add Fields
+
+Inside Student object → **Fields & Relationships → New**
+
+Create these fields:
+
+* Age → Number
+* Email → Email
+* Phone → Phone
+
+👉 Save all
+
+---
+
+## ✅ Step 4: Create Tab
+
+* Go to **Tabs → New**
+* Select **Student**
+* Choose any icon
+* Save
+
+---
+
+## ✅ Step 5: Create App
+
+Go to **App Manager → New Lightning App**
+
+* App Name → `Student App`
+* Add **Student Tab**
+* Save
+
+---
+
+## ✅ Step 6: Add Data
+
+* Open your app
+* Click **Student tab**
+* Click **New**
+
+👉 Add sample records
+
+---
+
+## ✅ Step 7: View Records
+
+* Check list view
+* Open records
+
+---
+
+# 📊 (Optional for extra marks)
+
+Create simple report:
+
+* Reports → New → Student Report
+
+---
+
+# 🧠 What You Built
+
+* 1 Custom Object
+* 3 Fields
+* 1 App
+* Data Entry
+
+---
+
+# 🔥 Viva One-liners
+
+* **Custom Object** → stores custom data
+* **Field** → stores specific information
+* **App** → collection of objects and tabs
+
+---
+
+# 🧾 Conclusion
+
+> A simple Salesforce app was created to manage student records using custom objects and fields.
+
+---
+
+# ⭐ Why this is perfect
+
+* ✔ Easy
+* ✔ Fast (15–20 min)
+* ✔ Enough for basic marks
+* ✔ Easy to explain
+
+---
+
+If you want, I can:
+
+* Upgrade this to **medium-level project (with relationships)**
+* OR give you a **ready-to-submit report file** 📄
