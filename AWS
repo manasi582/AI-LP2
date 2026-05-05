@@ -1,0 +1,51 @@
+AWS instance
+
+Launch instance
+Name; MyWebServer
+Instance Type: t2.micro or t3.micro
+Key pair:
+Key  pair name : my-key
+Key pair type : RSA
+Private key file format : .pem
+
+Launch Instance
+
+Inside Amazon Web Services console:
+1. Go to EC2
+2. Click your running instance
+3. Click Connect (top right)
+4. Choose EC2 Instance Connect
+5. Click Connect
+👉 A browser-based terminal opens
+
+sudo yum update -y
+sudo yum install httpd -y
+sudo systemctl start httpd
+sudo systemctl enable httpd
+
+Step 4: Upload Sample Webpage
+Go to web directory:
+
+cd /var/www/html
+
+Create a sample page:
+
+sudo nano index.html
+
+Paste:
+
+<html>
+<head><title>My EC2 Website</title></head>
+<body>
+<h1>Hello from EC2 🎉</h1>
+<p>This is my sample webpage hosted on AWS.</p>
+</body>
+</html>
+
+Save: Ctrl + X → Y → Enter
+
+🌍 Step 5: View Website
+* Copy your Public IPv4 address
+* Open browser:
+
+http://<your-public-ip>
