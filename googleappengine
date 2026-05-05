@@ -1,0 +1,172 @@
+Here’s a **clear, step-by-step guide** to **install and configure Google App Engine (GAE)** and deploy a **simple `app.py`**. This is perfect for exams and practicals.
+
+---
+
+# 🚀 1. What is Google App Engine?
+
+Google App Engine is a **Platform as a Service (PaaS)** where you deploy apps without managing servers.
+
+---
+
+# 🧰 2. Prerequisites
+
+You need:
+
+* A Google account
+* Internet connection
+* Python installed (`python --version`)
+* Install Google Cloud SDK
+
+---
+
+# ⚙️ 3. Install Google Cloud SDK
+
+### 🔹 Download & Install
+
+* Go to Google Cloud SDK site
+* Download for your OS
+* Install it
+
+---
+
+### 🔹 Initialize SDK
+
+Open terminal:
+
+```bash
+gcloud init
+```
+
+👉 This will:
+
+* Ask you to login
+* Select/create a project
+* Set default configuration
+
+---
+
+# 📁 4. Create Project Folder
+
+```bash
+mkdir my-app
+cd my-app
+```
+
+---
+
+# 🧾 5. Create `app.py`
+
+This is your main application.
+
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Hello from Google App Engine 🚀"
+
+if __name__ == '__main__':
+    app.run()
+```
+
+---
+
+# 📄 6. Create `requirements.txt`
+
+```text
+Flask==2.0.1
+```
+
+---
+
+# 📄 7. Create `app.yaml`
+
+This file tells GAE how to run your app.
+
+```yaml
+runtime: python39
+
+entrypoint: gunicorn -b :$PORT app:app
+```
+
+---
+
+# 📦 8. Install dependencies locally (optional)
+
+```bash
+pip install flask gunicorn
+```
+
+---
+
+# ☁️ 9. Deploy to App Engine
+
+Run:
+
+```bash
+gcloud app deploy
+```
+
+👉 It will:
+
+* Upload your code
+* Build environment
+* Deploy app
+
+---
+
+# 🌍 10. Open Your App
+
+```bash
+gcloud app browse
+```
+
+👉 Your app opens in browser 🎉
+
+---
+
+# 🔴 If prompted
+
+* Select region → choose nearest
+* Allow APIs → type `y`
+
+---
+
+# 🧠 How it works (simple)
+
+* `app.py` → your logic
+* `app.yaml` → configuration
+* GAE → runs your app automatically
+
+---
+
+# 🔥 Viva Questions
+
+### ❓ What is app.yaml?
+
+> Configuration file for App Engine
+
+### ❓ What is GAE?
+
+> PaaS for deploying applications
+
+### ❓ Why Flask?
+
+> Lightweight framework for web apps
+
+---
+
+# 🧾 One-line summary
+
+> “I installed Google Cloud SDK, created a Flask app, configured app.yaml, and deployed it on App Engine using gcloud.”
+
+---
+
+## 👉 If you want next:
+
+I can give:
+
+* **Super short exam version (5 marks answer)**
+* OR help you **run this live step-by-step on your system** 🚀
